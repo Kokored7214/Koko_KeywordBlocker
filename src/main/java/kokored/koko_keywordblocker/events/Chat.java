@@ -12,7 +12,17 @@ public class Chat implements Listener {
         if (event.getMessage().contains("sb")){
             event.setCancelled(true);
             Player player = event.getPlayer();
-            player.sendMessage(ChatColor.RED + "請注意發言");
+            player.sendMessage(ChatColor.RED + "請注意用詞!");
+        }
+        if (event.getMessage().contains("sp")){
+            event.setCancelled(true);
+            Player player = event.getPlayer();
+            player.sendMessage(ChatColor.RED + "請注意用詞!");
+        }
+        if (event.getMessage().contains("gun")){
+            event.setCancelled(true);
+            Player player = event.getPlayer();
+            player.sendMessage(ChatColor.RED + "請注意用詞!");
         }
     }
 }
