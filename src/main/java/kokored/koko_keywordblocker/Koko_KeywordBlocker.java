@@ -1,6 +1,6 @@
 package kokored.koko_keywordblocker;
 
-import kokored.koko_keywordblocker.events.Chat;
+import kokored.koko_keywordblocker.events.KeywordBlocker;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Koko_KeywordBlocker extends JavaPlugin {
@@ -8,7 +8,10 @@ public final class Koko_KeywordBlocker extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        getServer().getPluginManager().registerEvents(new Chat(),this);
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
+
+        getServer().getPluginManager().registerEvents(new KeywordBlocker(),this);
 
     }
 

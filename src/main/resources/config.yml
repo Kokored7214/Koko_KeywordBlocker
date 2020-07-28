@@ -1,0 +1,15 @@
+#######################################
+#                                     #
+#         Koko_KeywordBlocker         #
+#         Author:Koko_red7214         #
+#                                     #
+#######################################
+
+#Whether to enable the blocking function
+enable: true
+
+#All the following keywords will be blocked
+keyword:
+  - 'gun'
+  - 'sb'
+  - 'fuck'

@@ -2,3 +2,4 @@ name: Koko_KeywordBlocker
 version: ${project.version}
 main: kokored.koko_keywordblocker.Koko_KeywordBlocker
 api-version: 1.16
+authors: [Koko_red7214]
