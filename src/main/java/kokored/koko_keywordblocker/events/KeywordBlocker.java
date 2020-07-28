@@ -20,6 +20,11 @@ public class KeywordBlocker implements Listener {
                 event.setCancelled(true);
                 player.sendMessage(ChatColor.RED + "該用詞遭到屏蔽 無法發出!");
                 player.sendMessage(ChatColor.RED + "The word is blocked, cannot be sent!");
+                System.out.println("[Koko_KeywordBlocker] ---------------------------------------------");
+                System.out.println("[Koko_KeywordBlocker] 玩家 " + player.getDisplayName() + " 發送了一條被屏蔽的信息!");
+                System.out.println("[Koko_KeywordBlocker] 該玩家在 " + player.getLocation());
+                System.out.println("[Koko_KeywordBlocker] 該玩家的登入IP " + player.getAddress());
+                System.out.println("[Koko_KeywordBlocker] ---------------------------------------------");
             }
         }
     }
