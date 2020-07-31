@@ -10,6 +10,4 @@ enable: true
 
 #All the following keywords will be blocked
 keyword:
-  - 'gun'
-  - 'sb'
   - 'fuck'

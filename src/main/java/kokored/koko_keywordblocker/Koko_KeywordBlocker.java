@@ -7,7 +7,7 @@ public final class Koko_KeywordBlocker extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        System.out.println("Koko_KeywordBlocker has enabled");
         getConfig().options().copyDefaults();
         saveDefaultConfig();
 
@@ -17,6 +17,7 @@ public final class Koko_KeywordBlocker extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        System.out.println("Koko_KeywordBlocker has disabled");
+
     }
 }
