@@ -1,6 +1,7 @@
 package kokored.koko_keywordblocker.events;
 
 import kokored.koko_keywordblocker.Koko_KeywordBlocker;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,24 +13,32 @@ public class KeywordBlocker implements Listener {
     Plugin plugin = Koko_KeywordBlocker.getPlugin(Koko_KeywordBlocker.class);
     @EventHandler
     public void ChatEvent(AsyncPlayerChatEvent event){
-        Player player = (Player)  event.getPlayer();
+        Player p = (Player)  event.getPlayer();
         String message = event.getMessage();
 
-        int x = player.getLocation().getBlockX();
-        int y = player.getLocation().getBlockY();
-        int z = player.getLocation().getBlockZ();
-        if (!player.hasPermission("kokokeywordblocker.bypass")) {
+        int x = p.getLocation().getBlockX();
+        int y = p.getLocation().getBlockY();
+        int z = p.getLocation().getBlockZ();
+        if (!p.hasPermission("kokokeywordblocker.bypass")) {
             if (plugin.getConfig().getBoolean("enable")) {
                 for (int i = 0 ; i < plugin.getConfig().getStringList("keyword").size() ; i++){
                     if (message.contains(plugin.getConfig().getStringList("keyword").get(i))){
                         event.setCancelled(true);
-                        player.sendMessage(ChatColor.translateAlternateColorCodes(':', "" + plugin.getConfig().getString("blockmessage").toString()));
+                        p.sendMessage(ChatColor.translateAlternateColorCodes(':', "" + plugin.getConfig().getString("blockmessage").toString()));
                         System.out.println("[Koko_KeywordBlocker] -------------------------------------------------------------------");
-                        System.out.println("[Koko_KeywordBlocker] Player " + player.getDisplayName() + " sent a blocked message!");
+                        System.out.println("[Koko_KeywordBlocker] Player " + p.getDisplayName() + " sent a blocked message!");
                         System.out.println("[Koko_KeywordBlocker] Message content: " + message);
-                        System.out.println("[Koko_KeywordBlocker] Player at: " + " world:" + player.getLocation().getWorld().getName() + " X:" + x + " Y:" + y + " Z:" + z);
-                        System.out.println("[Koko_KeywordBlocker] Player's login IP: " + player.getAddress());
+                        System.out.println("[Koko_KeywordBlocker] Player at: " + " world:" + p.getLocation().getWorld().getName() + " X:" + x + " Y:" + y + " Z:" + z);
+                        System.out.println("[Koko_KeywordBlocker] Player's login IP: " + p.getAddress());
                         System.out.println("[Koko_KeywordBlocker] -------------------------------------------------------------------");
+
+                        for (Player op : Bukkit.getOnlinePlayers()) {
+
+                            if (op.isOp()) {
+                                op.sendMessage(ChatColor.translateAlternateColorCodes(':', "" + plugin.getConfig().getString("adminmessage").replace("%player%", p.getName())));
+
+                            }
+                        }
 
                     }
                 }

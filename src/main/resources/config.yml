@@ -11,6 +11,7 @@ enable: true
 #If player send the keyword then send this msg to the player
 #ColorCode " : "
 blockmessage: :c The word is blocked, cannot be sent!
+adminmessage: :c %player% has send a blocked msg!
 
 #All the following keywords will be blocked
 keyword:
