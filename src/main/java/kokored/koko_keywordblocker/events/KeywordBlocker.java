@@ -23,8 +23,7 @@ public class KeywordBlocker implements Listener {
                 for (int i = 0 ; i < plugin.getConfig().getStringList("keyword").size() ; i++){
                     if (message.contains(plugin.getConfig().getStringList("keyword").get(i))){
                         event.setCancelled(true);
-                        player.sendMessage(ChatColor.RED + "該用詞遭到屏蔽 無法發出!");
-                        player.sendMessage(ChatColor.RED + "The word is blocked, cannot be sent!");
+                        player.sendMessage(ChatColor.translateAlternateColorCodes(':', "" + plugin.getConfig().getString("blockmessage").toString()));
                         System.out.println("[Koko_KeywordBlocker] -------------------------------------------------------------------");
                         System.out.println("[Koko_KeywordBlocker] Player " + player.getDisplayName() + " sent a blocked message!");
                         System.out.println("[Koko_KeywordBlocker] Message content: " + message);

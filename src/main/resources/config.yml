@@ -8,6 +8,10 @@
 #Whether to enable the blocking function
 enable: true
 
+#If player send the keyword then send this msg to the player
+#ColorCode " : "
+blockmessage: :c The word is blocked, cannot be sent!
+
 #All the following keywords will be blocked
 keyword:
   - 'fuck'
