@@ -24,9 +24,9 @@ public class KeywordBlocker implements Listener {
                 for (int i = 0 ; i < plugin.getConfig().getStringList("keyword").size() ; i++){
                     if (message.contains(plugin.getConfig().getStringList("keyword").get(i))){
                         event.setCancelled(true);
-                        p.sendMessage(ChatColor.translateAlternateColorCodes(':', "" + plugin.getConfig().getString("blockmessage").toString()));
+                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', "" + plugin.getConfig().getString("blockmessage").toString()));
                         System.out.println("[Koko_KeywordBlocker] -------------------------------------------------------------------");
-                        System.out.println("[Koko_KeywordBlocker] Player " + p.getDisplayName() + " sent a blocked message!");
+                        System.out.println("[Koko_KeywordBlocker] Player " + p.getDisplayName() + " send a blocked message!");
                         System.out.println("[Koko_KeywordBlocker] Message content: " + message);
                         System.out.println("[Koko_KeywordBlocker] Player at: " + " world:" + p.getLocation().getWorld().getName() + " X:" + x + " Y:" + y + " Z:" + z);
                         System.out.println("[Koko_KeywordBlocker] Player's login IP: " + p.getAddress());
@@ -35,7 +35,10 @@ public class KeywordBlocker implements Listener {
                         for (Player op : Bukkit.getOnlinePlayers()) {
 
                             if (op.isOp()) {
-                                op.sendMessage(ChatColor.translateAlternateColorCodes(':', "" + plugin.getConfig().getString("adminmessage").replace("%player%", p.getName())));
+                                op.sendMessage(ChatColor.translateAlternateColorCodes('&', "" + plugin.getConfig().getString("adminmessage")
+                                        .replace("%player%", p.getName()
+                                        .replace("%msg%", message)
+                                        .replace("%location%", "X:" + x + " Y:" + y + " Z:" + z))));
 
                             }
                         }

@@ -10,9 +10,14 @@ enable: true
 
 #If player send the keyword then send this msg to the player
 #ColorCode " : "
-blockmessage: :c The word is blocked, cannot be sent!
-adminmessage: :c %player% has send a blocked msg!
+blockmessage: '&cThe word is blocked, cannot be sent!'
+
+# %player% = Player Name
+# %msg% = Blocked Message
+# %location% = Player Location
+adminmessage: '&c%player% has send a blocked msg : &c%msg%!'
 
 #All the following keywords will be blocked
 keyword:
   - 'fuck'
+  - 'fck'
