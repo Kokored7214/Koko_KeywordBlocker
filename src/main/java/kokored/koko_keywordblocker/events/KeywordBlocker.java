@@ -14,7 +14,6 @@ public class KeywordBlocker implements Listener {
     @EventHandler
     public void ChatEvent(AsyncPlayerChatEvent event){
         Player p = (Player)  event.getPlayer();
-        String message = event.getMessage();
 
         int x = p.getLocation().getBlockX();
         int y = p.getLocation().getBlockY();
@@ -22,6 +21,9 @@ public class KeywordBlocker implements Listener {
         if (!p.hasPermission("kokokeywordblocker.bypass")) {
             if (plugin.getConfig().getBoolean("enable")) {
                 for (int i = 0 ; i < plugin.getConfig().getStringList("keyword").size() ; i++){
+
+                    String message = event.getMessage();
+
                     if (message.contains(plugin.getConfig().getStringList("keyword").get(i))){
                         event.setCancelled(true);
                         p.sendMessage(ChatColor.translateAlternateColorCodes('&', "" + plugin.getConfig().getString("blockmessage").toString()));
@@ -29,16 +31,15 @@ public class KeywordBlocker implements Listener {
                         System.out.println("[Koko_KeywordBlocker] Player " + p.getDisplayName() + " send a blocked message!");
                         System.out.println("[Koko_KeywordBlocker] Message content: " + message);
                         System.out.println("[Koko_KeywordBlocker] Player at: " + " world:" + p.getLocation().getWorld().getName() + " X:" + x + " Y:" + y + " Z:" + z);
-                        System.out.println("[Koko_KeywordBlocker] Player's login IP: " + p.getAddress());
                         System.out.println("[Koko_KeywordBlocker] -------------------------------------------------------------------");
 
                         for (Player op : Bukkit.getOnlinePlayers()) {
 
                             if (op.isOp()) {
                                 op.sendMessage(ChatColor.translateAlternateColorCodes('&', "" + plugin.getConfig().getString("adminmessage")
-                                        .replace("%player%", p.getName()
-                                        .replace("%msg%", message)
+                                        .replace("%player%", "" + p.getName()
                                         .replace("%location%", "X:" + x + " Y:" + y + " Z:" + z))));
+                                op.sendMessage(ChatColor.YELLOW + "Please check the console");
 
                             }
                         }

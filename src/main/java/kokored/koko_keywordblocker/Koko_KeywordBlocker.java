@@ -1,6 +1,8 @@
 package kokored.koko_keywordblocker;
 
 import kokored.koko_keywordblocker.events.KeywordBlocker;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Koko_KeywordBlocker extends JavaPlugin {
@@ -20,4 +22,5 @@ public final class Koko_KeywordBlocker extends JavaPlugin {
         System.out.println("Koko_KeywordBlocker has disabled");
 
     }
+
 }
